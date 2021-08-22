@@ -1,9 +1,13 @@
-import React from 'react'
+import React from "react";
+import './App.css';
 
 function App(){
-  const mensagem = "olá mundo!";
-return (<h1>{mensagem}</h1>)
-}
+
+  return <div className="container">
+    <h1>EU AQUI</h1>
+  </div>;
+
+};
 
 
 export default App ;
