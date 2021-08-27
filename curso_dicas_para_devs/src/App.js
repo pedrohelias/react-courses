@@ -1,30 +1,42 @@
 import React, { useState } from "react";
 import './App.css';
+import Tasks from "./components/Tasks";
 
+const App = () => {
+  //let mensagem = "olá mundo!";
+  const [tasks, setTasks] = useState([ //lista de objetos
 
-function App(){
-  // let mensagem = "uma mensagem aqui!"
-  const [mensagem, setMensagem] = useState(''); //o UseState me da o estado atual da variavel
+    {
+    id: "1",
+    title: "Estudar programação!",
+    completed: false,
 
-  function alteramsg(){
+    },
+
+    {  
     
-    setMensagem("nova mensagem");
-  }
+    id: "2",
+    title: "Ler Livros",
+    completed: true,
+    
+    },
 
-  return (
+  
+]); //ao utilizar um state, sempre se coloca[variavel a ser alterada, nome da função que vai altera-la]
+
+
+  return( 
     <div>
-      
-      <div className="container">
-        <h1>{mensagem}</h1>
-      </div>;
-      
-      <button onClick={alteramsg}>
-        mudar mensagem
-      </button>;
+      <div className = "container">
+        <Tasks tasks={tasks}></Tasks>
 
+
+      </div>
     </div>
-  );
-};
+  )
+}
 
+
+//O App é o componente pai da tasks pois está renderizando a tasks
 
 export default App ;
