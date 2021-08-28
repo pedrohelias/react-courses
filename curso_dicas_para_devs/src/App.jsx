@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import './App.css';
+import AddTask from "./components/AddTask";
+import Button from "./components/Button";
 import Tasks from "./components/Tasks";
 
 const App = () => {
@@ -28,8 +30,10 @@ const App = () => {
   return( 
     <div>
       <div className = "container">
+        <AddTask></AddTask>
+        
         <Tasks tasks={tasks}></Tasks>
-
+       
 
       </div>
     </div>
