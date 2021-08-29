@@ -3,6 +3,7 @@ import './App.css';
 import AddTask from "./components/AddTask";
 import Button from "./components/Button";
 import Tasks from "./components/Tasks";
+import {v4 as uuidv4} from "uuid";
 
 const App = () => {
   //let mensagem = "olá mundo!";
@@ -25,14 +26,32 @@ const App = () => {
 
   
 ]); //ao utilizar um state, sempre se coloca[variavel a ser alterada, nome da função que vai altera-la]
+  const handleTaskClickmodified = (taskId) => {
+    const newTasks = tasks.map((task)=>{
+      if(task.id === taskId) return {...task, completed: !task.completed}
+      return task;
+    });
 
+    setTasks(newTasks);
+
+  };
+  const handleTaskAddition = (taskTitle) => { //lidar com a adição de tasks
+    const newTask = [...tasks,{ //...tasks significa tudo que está em task
+      id: uuidv4(),
+      title: taskTitle,
+      completed: false
+    }]
+
+    setTasks(newTask);
+
+  }
 
   return( 
     <div>
       <div className = "container">
-        <AddTask></AddTask>
+        <AddTask handleTaskAddition={handleTaskAddition}></AddTask>
         
-        <Tasks tasks={tasks}></Tasks>
+        <Tasks tasks={tasks}  handleTaskClickmodified = { handleTaskClickmodified}></Tasks>
        
 
       </div>
