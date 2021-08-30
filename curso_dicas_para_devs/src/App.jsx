@@ -4,6 +4,7 @@ import AddTask from "./components/AddTask";
 import Button from "./components/Button";
 import Tasks from "./components/Tasks";
 import {v4 as uuidv4} from "uuid";
+import Header from "./components/Header";
 
 const App = () => {
   //let mensagem = "olá mundo!";
@@ -20,7 +21,7 @@ const App = () => {
     
     id: "2",
     title: "Ler Livros",
-    completed: true,
+    completed: false,
     
     },
 
@@ -44,14 +45,20 @@ const App = () => {
 
     setTasks(newTask);
 
-  }
+  };
+
+  const handleTaskDeletion= (taskId) => { //lidar com a adição de tasks. Precisar estar aqui para ser filho do settasks
+    const newTask = tasks.filter(task => task.id !== taskId);
+    setTasks(newTask);
+  };
 
   return( 
     <div>
       <div className = "container">
+        <Header></Header>
         <AddTask handleTaskAddition={handleTaskAddition}></AddTask>
         
-        <Tasks tasks={tasks}  handleTaskClickmodified = { handleTaskClickmodified}></Tasks>
+        <Tasks tasks={tasks}  handleTaskClickmodified = { handleTaskClickmodified} handleTaskDeletion = {handleTaskDeletion}></Tasks>
        
 
       </div>
