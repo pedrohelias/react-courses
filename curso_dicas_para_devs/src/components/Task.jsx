@@ -15,9 +15,11 @@ const Task = ({task,  handleTaskClickmodified, handleTaskDeletion}) => {
             </div>
 
             <div className= "buttons-container">
-                <button className = "remove-task-button" onClick={()=> handleTaskDeletion(task.id)}>X</button>
-
+                <button className = "remove-task-button" onClick={()=> handleTaskDeletion(task.id)}>x</button>
+                <button className = "task-details-button" >info</button>
             </div>
+
+            
 
 
         </div>

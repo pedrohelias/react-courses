@@ -5,6 +5,7 @@ import Button from "./components/Button";
 import Tasks from "./components/Tasks";
 import {v4 as uuidv4} from "uuid";
 import Header from "./components/Header";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
 const App = () => {
   //let mensagem = "olá mundo!";
@@ -53,17 +54,24 @@ const App = () => {
   };
 
   return( 
-    <div>
+   <Router>
       <div className = "container">
         <Header></Header>
-        <AddTask handleTaskAddition={handleTaskAddition}></AddTask>
-        
-        <Tasks tasks={tasks}  handleTaskClickmodified = { handleTaskClickmodified} handleTaskDeletion = {handleTaskDeletion}></Tasks>
-       
+        <Route path="/" exact render={()=>( //atenção para o parenteses, ele entrega um return
+          
+          <div>  
+            <AddTask handleTaskAddition={handleTaskAddition}></AddTask>
+            <Tasks tasks={tasks} handleTaskClickmodified={handleTaskClickmodified} handleTaskDeletion={handleTaskDeletion}></Tasks>
+          </div>
 
+        )}>
+
+        </Route>
+        
       </div>
-    </div>
-  )
+  
+    </Router>
+  );
 }
 
 
