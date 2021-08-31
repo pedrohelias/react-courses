@@ -6,6 +6,7 @@ import Tasks from "./components/Tasks";
 import {v4 as uuidv4} from "uuid";
 import Header from "./components/Header";
 import { BrowserRouter as Router, Route } from "react-router-dom";
+import TaskDetails from "./components/TaskDetails";
 
 const App = () => {
   //let mensagem = "olá mundo!";
@@ -57,6 +58,8 @@ const App = () => {
    <Router>
       <div className = "container">
         <Header></Header>
+
+
         <Route path="/" exact render={()=>( //atenção para o parenteses, ele entrega um return
           
           <div>  
@@ -65,6 +68,14 @@ const App = () => {
           </div>
 
         )}>
+
+        </Route>
+
+        <Route path="/:taskTitle" exact component={TaskDetails}> 
+        
+
+
+
 
         </Route>
         
